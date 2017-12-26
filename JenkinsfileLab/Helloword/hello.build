@@ -6,6 +6,7 @@
         <include name="JenkinsfileLab.sln" />
     </excludeprojects>
     </solution>   
+    <call target="methodTest">
    </target>
    <property name="src.dir" value="C:\Program Files (x86)\Jenkins\workspace\dec25" />
    <property name="build.dir" value="bin" />
@@ -17,7 +18,7 @@
     <property name="slash" value="\" />
    def msg="building.........."
 
-   <target name="build" depends="builds">
+   <target name="build" >
       <solution solutionfile="${src.dir}\JenkinsfileLab.sln"
           configuration="${solution.config}"
           outputdir="${build.dir}">
