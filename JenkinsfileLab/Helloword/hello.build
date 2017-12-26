@@ -19,6 +19,7 @@
    def msg="building.........."
 
    <target name="build" >
+   <echo>Entered build<echo/>
       <solution solutionfile="${src.dir}\JenkinsfileLab.sln"
           configuration="${solution.config}"
           outputdir="${build.dir}">
@@ -34,13 +35,19 @@
       </solution>
    </target>
    <target name="methodTest" depends="build">
-    <CSScript method="true" >
+    <CSScript method="true" 
+    <script language="C#">
+          <code> 
+ 
+
     <![CDATA[
       public static void Task()
       {
            Console.WriteLine("Hello World (from method)");
       }
     ]]>
+    </code>
+    </script>
     </CSScript>
 </target>
    <if test="${not file::exists (fullpathoffile) or file::get-length (fullpathoffile) == 0}">
