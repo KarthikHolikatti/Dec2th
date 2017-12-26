@@ -17,7 +17,7 @@
             public static void ScriptMain(Project project) 
             {
                 
-                    Console.WriteLine("hello from console Katti007");
+                    Console.WriteLine("hello from console Katti007 AnanyaPeddus");
                 
             }
             ]]>
