@@ -35,7 +35,7 @@
       </solution>
    </target>
    <target name="methodTest">
-    <CSScript method="true">
+
     <script language="C#">
           <code> 
  
@@ -48,7 +48,7 @@
     ]]>
     </code>
     </script>
-    </CSScript>
+
 </target>
    <if test="${not file::exists (fullpathoffile) or file::get-length (fullpathoffile) == 0}">
     <echo message="The version file ${filename} doesn't exist or is empty!" />
