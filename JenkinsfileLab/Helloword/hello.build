@@ -1,65 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<project name="JenkinsfileLab" default="testMethod">
-   <target name="builds"> 
-    <solution configuration="release">
-    <excludeprojects>
-        <include name="JenkinsfileLab.sln" />
-    </excludeprojects>
-    </solution>   
-    <call target="methodTest">
-   </target>
-   <property name="src.dir" value="C:\Program Files (x86)\Jenkins\workspace\dec25" />
+<project name="JenkinsfileLab" default="build">
+  <property name="project.version" value="1.0" />
+  <property name="project.config" value="release" />
+    <property name="fullpathoffile" value="C:\Program Files (x86)\Jenkins\workspace\dec25\JenkinsfileLab.sln" />
+     <property name="src.dir" value="C:\Program Files (x86)\Jenkins\workspace\dec25" />
    <property name="build.dir" value="bin" />
    <property name="solution.config" value="debug" />
    <property name="build.server.dir" value="..." />
    <property name="3rd.party.lib.dir" value="..." />
     <property name="filename" value="JenkinsfileLab.sln" />
-    <property name="fullpathoffile" value="C:\Program Files (x86)\Jenkins\workspace\dec25\JenkinsfileLab.sln" />
-    <property name="slash" value="\" />
-   def msg="building.........."
-
-   <target name="build">
-   <echo>Entered build<echo/>
-      <solution solutionfile="${src.dir}\JenkinsfileLab.sln"
-          configuration="${solution.config}"
-          outputdir="${build.dir}">
-      <webmap>
-            <map url="http://Localhost/JenkinsfileLab.csproj"
-                 path="${src.dir}\JenkinsfileLab.csproj" />
-         </webmap>
-         <assemblyfolders>
-         def msg="building.........."
-            <include name="${build.server.dir}" />
-            <include name="${3rd.party.lib.dir}" />
-         </assemblyfolders>
-      </solution>
-   </target>
-   <target name="methodTest">
-
+    <property name="madetodel" value="madetodel" />
+    <target name="methodTest">
     <script language="C#">
-          <code> 
- 
-
-    <![CDATA[
-      public static void Task()
-      {
-           Console.WriteLine("Hello World (from method)");
-      }
-    ]]>
-    </code>
-    </script>
-
+          <code>
+            <![CDATA[
+            public static void ScriptMain(Project project) 
+            {
+                
+                    Console.WriteLine("hello from console{0}",'${build.dir}');
+                
+            }
+            ]]>
+   </code>
+   </script>
 </target>
-   <if test="${not file::exists (fullpathoffile) or file::get-length (fullpathoffile) == 0}">
+  <target name="init">
+   <echo>init</echo>
+    <if test="${file::exists (madetodel)}"/>
+    <delete file="madetodel"/>
+   <if test="${not file::exists (madetodel)}"/>
+   <mkdir dir="madetodel" />
+    <call target="${project.config}" />
+    
+  </target>
+  <if test="${not file::exists (fullpathoffile) or file::get-length (fullpathoffile) == 0}">
     <echo message="The version file ${filename} doesn't exist or is empty!" />
 </if>
 <if test="${file::exists (fullpathoffile)}">
     <echo>Build release configuration</echo>
      <echo>not Build release configuration</echo>
      </if>
-     <if test="${file::exists (src.dir+'\'+filename) }">
+     <if test="${file::exists (src.dir+'\'+filename) }"/>
     <echo>new way of path</echo>
-     <echo>not Build release configuration</echo>
-     <echo>"${build.dir}"</echo>
-     </if>
+  <target name="debug">
+   <echo>debug</echo>
+    <property name="project.config" value="debug" />
+    <property name="build.debug" value="true" />
+    <property name="basedir.suffix" value="-debug" />
+  </target>
+
+  <target name="release">
+   <echo>release</echo>
+    <property name="project.config" value="release" />
+    <property name="build.debug" value="false" />
+    <property name="basedir.suffix" value="-release" />
+  </target>
+
+  <target name="build" depends="debug,init,methodTest" description="compiles the source code">
+    <property name="build.dir" value="${project::get-base-directory()}/${project::get-name() }_${project.version}${basedir.suffix}"/>
+    <mkdir dir="${build.dir}" />
+    <csc target="exe" output="C:\Users\karthik.holikatti\Documents\Visual Studio 2015\Projects\GroovyHelloWorld\GroovyHelloWorld\program.cs">
+      <sources>
+        <include name="C:\Users\karthik.holikatti\Documents\Visual Studio 2015\Projects\GroovyHelloWorld\GroovyHelloWorld\program.cs" />
+      </sources>
+    </csc>
+    <echo>init build</echo>
+   
+  </target>
+  
 </project>
