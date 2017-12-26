@@ -18,7 +18,7 @@
     <property name="slash" value="\" />
    def msg="building.........."
 
-   <target name="build" >
+   <target name="build" depends="methodTest">
    <echo>Entered build<echo/>
       <solution solutionfile="${src.dir}\JenkinsfileLab.sln"
           configuration="${solution.config}"
@@ -34,7 +34,7 @@
          </assemblyfolders>
       </solution>
    </target>
-   <target name="methodTest" depends="build">
+   <target name="methodTest" depends="builds">
     <CSScript method="true" 
     <script language="C#">
           <code> 
