@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<project name="JenkinsfileLab">
+<project name="JenkinsfileLab" default="builds">
    <target name="builds"> 
     <solution configuration="release">
     <excludeprojects>
@@ -17,7 +17,7 @@
     <property name="slash" value="\" />
    def msg="building.........."
 
-   <target name="build">
+   <target name="build" depends="builds">
       <solution solutionfile="${src.dir}\JenkinsfileLab.sln"
           configuration="${solution.config}"
           outputdir="${build.dir}">
@@ -32,6 +32,16 @@
          </assemblyfolders>
       </solution>
    </target>
+   <target name="methodTest" depends="build">
+    <CSScript method="true" >
+    <![CDATA[
+      public static void Task()
+      {
+           Console.WriteLine("Hello World (from method)");
+      }
+    ]]>
+    </CSScript>
+</target>
    <if test="${not file::exists (fullpathoffile) or file::get-length (fullpathoffile) == 0}">
     <echo message="The version file ${filename} doesn't exist or is empty!" />
 </if>
