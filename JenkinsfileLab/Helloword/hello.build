@@ -7,13 +7,13 @@
     </excludeprojects>
     </solution>   
    </target>
-   <property name="src.dir" value="C:\Program Files (x86)\Jenkins\workspace\dotnetjenkinsfile2`" />
+   <property name="src.dir" value="C:\Program Files (x86)\Jenkins\workspace\dec25" />
    <property name="build.dir" value="bin" />
    <property name="solution.config" value="debug" />
    <property name="build.server.dir" value="..." />
    <property name="3rd.party.lib.dir" value="..." />
     <property name="filename" value="JenkinsfileLab.sln" />
-    <property name="fullpathoffile" value="C:\Program Files (x86)\Jenkins\workspace\dotnetjenkinsfile2`\JenkinsfileLab.sln" />
+    <property name="fullpathoffile" value="C:\Program Files (x86)\Jenkins\workspace\dec25\JenkinsfileLab.sln" />
     <property name="slash" value="\" />
    def msg="building.........."
 
