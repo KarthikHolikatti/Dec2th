@@ -31,7 +31,7 @@
     
     <target name="ioTest">
         <CSScript file="script.cs" />
-    </target
+    </target>
 
   <target name="init">
    <echo>init</echo>
