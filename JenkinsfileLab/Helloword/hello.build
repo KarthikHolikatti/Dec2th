@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<project name="JenkinsfileLab" default="ioTest" basedir=".">
+<project name="JenkinsfileLab" default="build" basedir=".">
   <property name="project.version" value="1.0" />
   <property name="project.config" value="release" />
     <property name="fullpathoffile" value="C:\Program Files (x86)\Jenkins\workspace\dec25\JenkinsfileLab.sln" />
@@ -29,10 +29,7 @@
    </script>
 </target>
   
-    <target name="ioTest">
-        <CSScript file="script.cs" />
-    </target>
-
+  
   <target name="init">
    <echo>init</echo>
     <if test="${file::exists (madetodel)}"/>
