@@ -17,8 +17,12 @@
             public static void ScriptMain(Project project) 
             {
                 
-                    Console.WriteLine("hello from console Katti007 love love AnanyaPeddus");
-                
+                   Print("HEllo from Console");
+            }
+            
+            public static void Print(String Statement)
+            {
+                  Console.WriteLine(Statement);   
             }
             ]]>
    </code>
