@@ -28,7 +28,7 @@
    </code>
    </script>
 </target>
-    <loadtasks assembly="CSScript.Tasks.dll"/>
+  
     <target name="ioTest">
         <CSScript file="script.cs" />
     </target>
